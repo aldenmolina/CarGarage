@@ -14,7 +14,7 @@ namespace CarGarage.Tests
             Car testCar = new Car();
 
             // Act 
-            cars.AddCar(testCar);
+            cars.AddCar();
 
             // Assert
             Assert.NotEmpty(cars.cars);
@@ -29,8 +29,8 @@ namespace CarGarage.Tests
             Car testCar = new Car();
 
             // Act
-            myGarage.AddCar(testCar);
-            myGarage.RemoveCar(testCar);
+            myGarage.AddCar();
+            myGarage.RemoveCar();
 
             // Assert
             Assert.Empty(myGarage.cars);
@@ -46,8 +46,8 @@ namespace CarGarage.Tests
             Car testCar2 = new Car();
             testCar.Fuel = 50;
             testCar2.Fuel = 50;
-            myGarage.AddCar(testCar);
-            myGarage.AddCar(testCar2);
+            myGarage.AddCar();
+            myGarage.AddCar();
 
             // Act
             myGarage.FuelAllCars();

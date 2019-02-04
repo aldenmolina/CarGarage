@@ -5,25 +5,15 @@ namespace CarGarage
     class Program
     {
         public static Garage myGarage = new Garage();
-        public static Car car = new Car("BMW", "325i");
-        public static Car car2 = new Car("Ford", "Focus");
-        public static Car car3 = new Car("Bucatti", "Veyron");
         public static int currentCarPosition;
         
        
         static void Main(string[] args)
         {
 
-            AddFirstThreeCars();
             MainMenu();
-            SwitchCurrent();
 
-            void AddFirstThreeCars()
-            {
-                myGarage.AddCar(car);
-                myGarage.AddCar(car2);
-                myGarage.AddCar(car3);
-            }
+            
             void MainMenu()
             {
                 Console.Clear();
@@ -40,27 +30,20 @@ namespace CarGarage
                 switch (input)
                 {
                     case "1":
-                        Console.WriteLine("What Make is the car?");
-                        string make = Console.ReadLine();
-                        Console.WriteLine("What Model is the car?");
-                        string model = Console.ReadLine();
-                        Console.Clear();
-                        Car car = new Car(make, model);
-                        myGarage.AddCar(car);
+                        myGarage.AddCar();
+                        MainMenu();
+                        break;
+                    case "2":
+                        myGarage.RemoveCar();
+                        MainMenu();
                         break;
                     case "3":
-                        Console.Clear();
-                        Console.WriteLine("Choose which car to remove from the garage");
-                        ListAllCars();
-                        int carPosition = Int32.Parse(Console.ReadLine()); 
-                        myGarage.RemoveCar(myGarage.cars[carPosition]);
-                        Console.WriteLine("YOU HAVE REMOVED " + myGarage.cars[carPosition].Make + " " + myGarage.cars[carPosition].Model);
-                        
+                        myGarage.AllStatus();
+                        Console.WriteLine("Press Enter to continue");
+                        Console.ReadKey();
+                        MainMenu();
                         break;
                     case "4":
-                        myGarage.AllStatus();                      
-                        break;
-                    case "5":
                         CarActions();
                         break;
                     default:
@@ -131,7 +114,7 @@ namespace CarGarage
                 int currentCarPosition = 0;
                 foreach (Car car in myGarage.cars)
                 {
-                    Console.WriteLine((currentCarPosition + 1) + ". Make: " + car.Make + " Model: " + car.Model);
+                    Console.WriteLine((currentCarPosition += 1) + ". Make: " + car.Make + " Model: " + car.Model);
                 }
             }
 
