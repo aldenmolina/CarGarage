@@ -32,14 +32,16 @@ namespace CarGarage
 
         public void AllStatus()
         {
+            Console.Clear();
             int carPosition = 0;
-            foreach (Car car in cars)
+            foreach (Car car in garage.cars)
             {
                 Console.WriteLine((carPosition += 1) + ". " + car.Make + " " + car.Model);
                 Console.WriteLine("Started: " + car.Started);
                 Console.WriteLine("Speed: " + car.Speed);
                 Console.WriteLine("Fuel: " + car.Fuel);
             }
+            
         }
 
     }

@@ -17,7 +17,7 @@ namespace CarGarage.Tests
             cars.AddCar(testCar);
 
             // Assert
-            Assert.Equal(testCar, cars.cars[0]);
+            Assert.NotEmpty(cars.cars);
         }
 
         [Fact]
