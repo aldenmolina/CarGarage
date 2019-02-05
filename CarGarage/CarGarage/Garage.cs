@@ -42,13 +42,16 @@ namespace CarGarage
             {
                 Console.WriteLine((currentCarPosition += 1) + ". Make: " + car.Make + " Model: " + car.Model);
             }
-
-            currentCarPosition = Convert.ToInt32(Console.ReadLine());
+            
+            string input = Console.ReadLine();
+            currentCarPosition = Int32.Parse(input);
             currentCarPosition--;
-            cars.Remove(cars[currentCarPosition]);
-            Console.WriteLine("YOU HAVE REMOVED " + cars[currentCarPosition].Make + " " + cars[currentCarPosition].Model);
-            cars.Remove(car);
+            Car currentCar = cars[currentCarPosition];
+            cars.Remove(currentCar);
+            Console.WriteLine("YOU HAVE REMOVED " + currentCar.Make + " " + currentCar.Model);
+            Console.ReadKey();           
         }
+
         public void FuelAllCars()
         {
             foreach (Car car in cars)
